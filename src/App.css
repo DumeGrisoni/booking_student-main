@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .default-page{
+    @apply px-[2rem] lg:px-[4rem] xl:px-[7rem]
+  }
+  .text-default {
+    @apply text-font-text-mobile lg:text-font-text-desktop leading-font-text-mobile lg:leading-font-text-desktop tracking-mobile-ls lg:tracking-desktop-ls;
+  }
+  .text-headline {
+    @apply text-font-headline-mobile lg:text-font-headline-desktop leading-font-headline-mobile lg:leading-font-headline-desktop tracking-mobile-ls lg:tracking-desktop-ls;
+  }
+  .text-title {
+    @apply text-font-title-mobile lg:text-font-title-desktop leading-font-title-mobile lg:leading-font-title-desktop tracking-mobile-ls lg:tracking-desktop-ls;
+  }
+  .active-link {
+    @apply text-primary-var-2 transition-all ease-in duration-100;
+  }
+  .text-bold {
+    @apply text-font-text-mobile lg:text-font-text-desktop leading-font-text-mobile lg:leading-font-text-desktop tracking-mobile-ls lg:tracking-desktop-ls font-bold;
+  }
+  .external-link {
+    @apply text-primary-var-2 hover:text-primary transition-all ease-in-out duration-100 font-bold;
+  }
+  .form-input {
+    @apply text-default text-grey-font font-bold w-full flex flex-col gap-5;
+  }
+  .btn {
+    @apply text-secondary hover:text-primary rounded-md shadow-sm shadow-grey-font border border-secondary hover:border-primary  bg-primary hover:bg-secondary duration-300 ease-in-out transition-all;
+  }
+  .flexbox-col{
+    @apply flex flex-col justify-center items-center
+  }
+  .flexbox-col-start{
+    @apply flex flex-col justify-start items-start
+  }
+  .flexbox-row{
+    @apply flex flex-row justify-center items-center
+  }
+  .flexbox-row-start{
+    @apply flex flex-row justify-start items-start
+  }
+  .shadow-default{
+    @apply shadow-md shadow-grey-font
+  }
+  .border-default {
+    @apply border border-grey-font rounded-md
+  }
+
+}
+
+@font-face {
+  font-family: 'CLARITTY';
+  src: url('./CLARITTB.TTF') format('truetype');
+}
+body {
+  font-family: 'Sans';
+  background-color: #f0f0e9;
+  padding: 0;
+  margin: 0;
+  z-index: 2;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+@media screen and (max-width: 1023px) {
+  body {
+    padding-top: 4rem;
+  }
+}

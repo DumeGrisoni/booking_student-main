@@ -30,6 +30,6 @@
     "**/*.mjs",
     "src/pages/Clients/Bookings.jsx",
     "src/Components/Calendar/CalendarTest.jsx"
-, "src/Components/Calendar/Calendar.jsx"  ],
+, "src/Components/Calendar/Calendar.jsx", "src/lib/hooks/Auth.tsx"  ],
   "exclude": ["node_modules"]
 }

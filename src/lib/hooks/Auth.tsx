@@ -12,6 +12,7 @@ export const AuthProvider = ({ children }: any) => {
   const [session, setSession] = useState<Session | null>();
   const [loading, setLoading] = useState(true);
 
+
   useEffect(() => {
     const setData = async () => {
       const {
@@ -32,6 +33,7 @@ export const AuthProvider = ({ children }: any) => {
     );
 
     setData();
+
 
     return () => {
       listener?.subscription.unsubscribe();

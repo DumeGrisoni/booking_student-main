@@ -9,7 +9,6 @@ const SignIn = () => {
     email: "",
     password: "",
   });
-  console.log(formData);
 
   function handleChange(e) {
     setFormdata((prevFormData) => {

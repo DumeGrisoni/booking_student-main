@@ -2,9 +2,10 @@
 import { useNavigate, useParams } from "react-router-dom";
 import ChildForm from "../../Components/Clients/ChildForm";
 import { supabase } from "../../lib/helpers/supabaseClient.js";
-const UpdateChild = () => {
+const Child = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+
   async function handleChildSubmit(formChildData) {
     try {
       const { data, error } = await supabase
@@ -18,7 +19,7 @@ const UpdateChild = () => {
           needs: formChildData.needs,
         })
         .eq("id", id)
-        .then(navigate("/profile"));
+        .then(navigate("/admin"));
       alert("success");
     } catch (error) {
       alert(error);
@@ -32,4 +33,4 @@ const UpdateChild = () => {
   );
 };
 
-export default UpdateChild;
+export default Child;

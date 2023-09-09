@@ -17,28 +17,42 @@ import Profile from "./pages/Clients/Profile.jsx";
 import NewChild from "./pages/Clients/NewChild.jsx";
 import UpdateChild from "./pages/Clients/UpdateChild.jsx";
 import Admin from "./pages/Admin/Admin.jsx";
+import Child from "./pages/Admin/Child.jsx";
+import APIContextProvider from "./lib/hooks/Data.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
       <AuthProvider>
-        <Navbar />
-        <ScrollToTop>
-          <Routes>
-            <Route exact path="/connexion" element={<SignIn />} />
-            <Route exact path="/update/:id" element={<UpdateChild />} />
-            <Route exact path="/inscription" element={<SignUp />} />
-            <Route exact path="/profile/enfant" element={<NewChild />} />
-            <Route exact path="/" element={<App />} />
-            <Route exact path="/bookings" element={<Bookings />} />
-            <Route exact path="/contact" element={<Contact />} />
-            <Route exact path="/presentation" element={<Presentation />} />
-            <Route exact path="/pricing" element={<Pricing />} />
-            <Route exact path="/profile" element={<Profile />} />
-            <Route exact path="/admin" element={<Admin />} />
-          </Routes>
-        </ScrollToTop>
-        <Footer />
+        <APIContextProvider>
+          <Navbar />
+          <ScrollToTop>
+            <Routes>
+              <Route exact path="/connexion" element={<SignIn />} />
+              <Route exact path="/update/:id" element={<UpdateChild />} />
+              <Route exact path="/inscription" element={<SignUp />} />
+              <Route exact path="/profile/enfant" element={<NewChild />} />
+              <Route exact path="/" element={<App />} />
+              <Route exact path="/bookings" element={<Bookings />} />
+              <Route exact path="/contact" element={<Contact />} />
+              <Route exact path="/presentation" element={<Presentation />} />
+              <Route exact path="/pricing" element={<Pricing />} />
+              <Route exact path="/profile" element={<Profile />} />
+              <Route exact path="/admin" element={<Admin />} />
+              <Route exact path="/admin/enfant/:id" element={<Child />} />
+              <Route
+                exact
+                path="*"
+                element={
+                  <h1 className="flexbox-col text-primary my-16 text-title font-bold">
+                    Vous vous êtes trompé de chemin
+                  </h1>
+                }
+              />
+            </Routes>
+          </ScrollToTop>
+          <Footer />
+        </APIContextProvider>
       </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>

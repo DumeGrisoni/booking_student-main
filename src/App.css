@@ -4,22 +4,22 @@
 
 @layer components {
   .default-page{
-    @apply px-[2rem] lg:px-[4rem] xl:px-[7rem]
+    @apply px-[2rem] md:px-[4rem] xl:px-[7rem]
   }
   .text-default {
-    @apply text-font-text-mobile lg:text-font-text-desktop leading-font-text-mobile lg:leading-font-text-desktop tracking-mobile-ls lg:tracking-desktop-ls;
+    @apply text-font-text-mobile md:text-font-text-desktop leading-font-text-mobile md:leading-font-text-desktop tracking-mobile-ls md:tracking-desktop-ls;
   }
   .text-headline {
-    @apply text-font-headline-mobile lg:text-font-headline-desktop leading-font-headline-mobile lg:leading-font-headline-desktop tracking-mobile-ls lg:tracking-desktop-ls;
+    @apply text-font-headline-mobile md:text-font-headline-desktop leading-font-headline-mobile md:leading-font-headline-desktop tracking-mobile-ls md:tracking-desktop-ls;
   }
   .text-title {
-    @apply text-font-title-mobile lg:text-font-title-desktop leading-font-title-mobile lg:leading-font-title-desktop tracking-mobile-ls lg:tracking-desktop-ls;
+    @apply text-font-title-mobile md:text-font-title-desktop leading-font-title-mobile md:leading-font-title-desktop tracking-mobile-ls md:tracking-desktop-ls;
   }
   .active-link {
     @apply text-primary-var-2 transition-all ease-in duration-100;
   }
   .text-bold {
-    @apply text-font-text-mobile lg:text-font-text-desktop leading-font-text-mobile lg:leading-font-text-desktop tracking-mobile-ls lg:tracking-desktop-ls font-bold;
+    @apply text-font-text-mobile md:text-font-text-desktop leading-font-text-mobile md:leading-font-text-desktop tracking-mobile-ls md:tracking-desktop-ls font-bold;
   }
   .external-link {
     @apply text-primary-var-2 hover:text-primary transition-all ease-in-out duration-100 font-bold;

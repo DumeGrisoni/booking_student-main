@@ -8,34 +8,15 @@ import ConfirmationModal from "../../Components/Clients/ConfirmationModal.jsx";
 import SignIn from "./SignIn.jsx";
 import Calendar from "../../Components/Calendar/Calendar.jsx";
 import Text from "../../Components/Utils/Text.jsx";
+import { useAPI } from "../../lib/hooks/Data";
 
 const Bookings = () => {
+  const { allCourses, userChilds } = useAPI();
   const navigate = useNavigate();
-  const { user } = useAuth();
-  const { session } = useAuth();
+  const { user, session } = useAuth();
   const [selectedChild, setSelectedChild] = useState();
-  const [childs, setChilds] = useState();
-  const [allCourses, setAllCourses] = useState();
   const [selectedCourse, setSelectedCourse] = useState();
   const [showModal, setShowModal] = useState(false);
-
-  useEffect(() => {
-    const { data, error } = supabase
-      .from("courses")
-      .select()
-      .then((resultAllCourses) => {
-        setAllCourses(resultAllCourses.data);
-      });
-  }, []);
-
-  const FetchChilds = async () => {
-    const { data: resultChildData, error } = await supabase
-      .from("childs")
-      .select()
-      .eq("user_id", user.id);
-
-    setChilds(resultChildData);
-  };
 
   function handleSelectedChild(e) {
     setSelectedChild((prevSelectedChild) => {
@@ -53,7 +34,6 @@ const Bookings = () => {
         [e.target.name]: e.target.value,
       };
     });
-    FetchChilds();
   }
 
   const handleForm = async (selectedHour, formattedDay) => {
@@ -124,8 +104,8 @@ const Bookings = () => {
                   <option value="default" defaultValue hidden>
                     Prénom de l&apos;enfant
                   </option>
-                  {childs?.length > 0 ? (
-                    childs?.map((child) => (
+                  {userChilds?.length > 0 ? (
+                    userChilds?.map((child) => (
                       <option key={child.id} value={child.id}>
                         {child.first_name}
                       </option>

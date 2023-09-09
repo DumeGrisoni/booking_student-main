@@ -1,25 +1,12 @@
 /* eslint-disable no-unused-vars */
 import { useAuth } from "../../lib/hooks/Auth";
-import { supabase } from "../../lib/helpers/supabaseClient";
+import { supabase } from "../../lib/helpers/supabaseClient.js";
 import { BsFillArrowDownCircleFill } from "react-icons/bs";
-import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import Agenda from "../../Components/Agenda/Agenda";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useAPI } from "../../lib/hooks/Data";
 
 const Admin = () => {
-  const [childs, setChilds] = useState();
-  useEffect(() => {
-    try {
-      const { data, error } = supabase
-        .from("childs")
-        .select()
-        .then((resultChild) => {
-          setChilds(resultChild.data);
-        });
-    } catch (error) {
-      alert(error);
-    }
-  }, []);
+  const { allChilds } = useAPI();
 
   async function handleSignOut() {
     try {
@@ -53,7 +40,7 @@ const Admin = () => {
             </div>
             <hr className="w-full" />
             <div className="text-title font-bold">Tous les cours</div>
-            <Agenda />
+
             <hr className="w-[80%]" />
             <div className="text-title font-bold">Tous les enfants</div>
             <div className="flexbox-col gap-3 w-full">
@@ -68,7 +55,7 @@ const Admin = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {childs?.map((child) => (
+                  {allChilds?.map((child) => (
                     <tr
                       key={child.id}
                       className="border-b border-secondary-blur text-center"
@@ -77,11 +64,10 @@ const Admin = () => {
                       <td>{child.first_name}</td>
                       <td>{child.age}</td>
                       <td>
-                        <button
-                          className="hover:text-primary-var-2 duration-300 ease-in-out"
-                          onClick={handleChild}
-                        >
-                          <BsFillArrowDownCircleFill />{" "}
+                        <button className="hover:text-primary-var-2 duration-300 ease-in-out">
+                          <NavLink to={`admin/enfant/${child.id}`}>
+                            <BsFillArrowDownCircleFill />
+                          </NavLink>
                         </button>
                       </td>
                     </tr>

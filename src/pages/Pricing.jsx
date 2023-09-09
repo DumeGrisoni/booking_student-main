@@ -6,9 +6,9 @@ import Text from "../Components/Utils/Text.jsx";
 
 const Pricing = () => {
   return (
-    <div className="flex flex-col justify-center gap-10 items-center m-10">
+    <div className="flexbox-col gap-10 m-10">
       <TaxBanner />
-      <p className="text-default text-primary">
+      <p className="text-default text-primary text-center">
         Je vous conseille de joindre les documents directement avec votre
         déclaration de revenus.
       </p>
@@ -16,7 +16,7 @@ const Pricing = () => {
         Déplacement en région bastiaise, Corse, suivi à domicile.
         <br /> Me contacter pour plus d&apos;informations.
       </p>
-      <div className="flex lg:flex-row flex-wrap flex-col justify-center gap-8 items-center mb-5">
+      <div className="md:flexbox-row flex-wrap flexbox-col gap-8 mb-5">
         <PricingContainer
           title="Cours particuliers"
           price="30€"
@@ -24,7 +24,7 @@ const Pricing = () => {
           hour="1 Heure"
           secondHour="8 Heures"
         >
-          <ul className="flex flex-col text-default gap-7">
+          <ul className="flexbox-col-start text-default gap-7">
             <li>- Aide aux devoirs.</li>
             <li>- Révisions des notions.</li>
             <li className="text-bold">
@@ -36,7 +36,7 @@ const Pricing = () => {
           </ul>
         </PricingContainer>
         <PricingContainer title="Enfant Déscolarisé" price="240€">
-          <ul className="flex flex-col gap-7 text-default">
+          <ul className="flexbox-col-start gap-7 text-default">
             <li className="text-bold">
               - Intégrer les notions de la semaine passée dans la mémoire à long
               terme.
@@ -55,7 +55,7 @@ const Pricing = () => {
           hour="Nous Contacter"
           price="240€"
         >
-          <ul className="flex flex-col gap-7">
+          <ul className="flexbox-col-start gap-7">
             <li className="text-bold">
               - Groupe de 4 à 5 enfants de même niveau (scolaire).
             </li>
@@ -68,7 +68,7 @@ const Pricing = () => {
           </ul>
         </PricingContainer>
         <PricingContainer title="Stage Préparation DNB" price="Nous Contacter">
-          <ul className="flex flex-col gap-7 text-default">
+          <ul className="flexbox-col-start gap-7 text-default">
             <li>- 4 à 5 heures par jour suivant ses besoins.</li>
             <li>- Préparation aux épreuves de Brevet.</li>
             <li className="text-bold">- Acquisition de l&apos;organisation.</li>
@@ -80,7 +80,7 @@ const Pricing = () => {
       <Button>
         <NavLink to="/bookings">Réserver</NavLink>
       </Button>
-      <div className="flex lg:w-[70%] justify-center  items-center">
+      <div className="flexbox-row md:w-[90%] text-center ">
         <Text>
           L&apos;entreprise se réserve le droit de modifier unilatéralement les
           prix de son offre à tout moment, notamment en cas d&apos;augmentation

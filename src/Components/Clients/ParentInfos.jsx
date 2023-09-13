@@ -16,40 +16,42 @@ const ParentInfos = ({ userProfile, userChilds }) => {
         <hr className="w-full text-grey-font" />
       </div>
 
-      <div className="flexbox-col-start gap-7 pl-7 pt-7">
-        <div className="flex gap-3">
+      <div className="flexbox-col-start gap-5 md:gap-7 pl-7 pt-7">
+        <div className="flex gap-1 md:gap-3  md:flex-row flex-col ">
           <span className="text-primary-var-1 font-bold">
             • Nom de Famille :{" "}
           </span>
           <span>{userProfile?.name}</span>
         </div>
-        <div className="flex gap-3">
+        <div className="flex md:flex-row flex-col gap-1 md:gap-3 ">
           <span className="text-primary-var-1 font-bold">• Courriel : </span>
           <span>{userProfile?.email}</span>
         </div>
-        <div className="flex gap-3">
+        <div className="flex gap-1 md:gap-3 md:flex-row flex-col">
           <span className="text-primary-var-1 font-bold">• Numéro : </span>
           <span>{userProfile?.phone}</span>
         </div>
-        <div className="flex gap-3">
+        <div className="flex gap-1 md:gap-3 md:flex-row flex-col">
           <span className="text-primary-var-1 font-bold">• Ville : </span>
           <span>{userProfile?.city}</span>
         </div>
-        <div className="flex gap-3">
+        <div className="flex gap-1 md:gap-3 md:flex-row flex-col">
           <span className="text-primary-var-1 font-bold">• adresse : </span>
           <span>{userProfile?.address}</span>
         </div>
-        <div className="flex gap-3">
+        <div className="flex gap-1 md:gap-3 md:flex-row flex-col">
           <span className="text-primary-var-1 font-bold">
             • Code Postale :{" "}
           </span>
           <span>{userProfile?.postale}</span>
         </div>
-        <div className="flex gap-3">
-          <span className="text-primary-var-1 font-bold">Enfants: </span>
+        <div className="flex gap-1 md:gap-3 md:flex-row flex-col">
+          <span className="text-primary-var-1 font-bold">• Enfants: </span>
           <span>
             {userChilds?.map((child) => (
-              <p key={child?.id}>- {child.first_name}</p>
+              <p key={child?.id} className="pl-2">
+                • {child.first_name}
+              </p>
             ))}{" "}
           </span>
         </div>

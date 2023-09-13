@@ -4,7 +4,7 @@
 
 @layer components {
   .default-page{
-    @apply px-[2rem] md:px-[2rem] xl:px-[7rem]
+    @apply px-[1rem] md:px-[2rem] xl:px-[7rem]
   }
   .text-default {
     @apply text-font-text-mobile md:text-font-text-desktop leading-font-text-mobile md:leading-font-text-desktop tracking-mobile-ls md:tracking-desktop-ls;

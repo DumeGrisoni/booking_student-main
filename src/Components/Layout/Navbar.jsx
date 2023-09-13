@@ -82,7 +82,7 @@ const Navbar = () => {
                   className="font-bold text-title text-primary hover:text-primary-var-2 duration-300 ease-out transition-all"
                 >
                   <AiOutlineUser className="text-title hidden lg:block" />
-                  <span className="lg:hidden">Profile</span>
+                  <span className="lg:hidden">Profil</span>
                 </NavLink>
               </li>
             ) : (

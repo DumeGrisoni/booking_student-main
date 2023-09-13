@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom';
-import facebookIcon from '../../assets/facebookIcon.svg';
-import instagramIcon from '../../assets/instagramIcon.svg';
-import emailIcon from '../../assets/emailIcon.svg';
+import { Link } from "react-router-dom";
+import facebookIcon from "../../assets/facebookIcon.svg";
+import instagramIcon from "../../assets/instagramIcon.svg";
+import emailIcon from "../../assets/emailIcon.svg";
 const Footer = () => {
   return (
     <section className=" h-auto pt-5 lg:pt-0 lg:h-[200px] flex-col lg:flex-row flex text-default w-full justify-center gap-5 lg:gap-[40%] items-center border-t border-grey-font">

@@ -43,30 +43,19 @@ const Profil = () => {
             <ParentInfos userProfile={userProfile[0]} userChilds={userChilds} />
           </section>
           {/* ENFANTS */}
-          <div className="flex flex-col mt-7 lg:mt-16 w-full border-default shadow-default">
-            <div className="flexbox-row text-left border-b border-grey-font mb-7">
-              <h2 className="text-title font-bold p-7 bg-secondary-var-1 rounded-md w-full">
-                Vos enfants
-              </h2>
-            </div>
-            {userChilds?.length > 0 ? (
+
+          {userChilds?.length > 0 ? (
+            <ChildInfo childs={userChilds} />
+          ) : (
+            <div className="flexbox-col gap-3">
+              <span>Vous n&apos;avez pas d&apos;enfants</span>
               <div>
-                {userChilds?.map((child) => (
-                  <ChildInfo child={child} key={child.id} />
-                ))}
+                <NavLink to="/profile/enfant" className="external-link">
+                  Ajouter un enfant ?
+                </NavLink>
               </div>
-            ) : (
-              <div className="flexbox-col gap-3">
-                <span>Vous n&apos;avez pas d&apos;enfants</span>
-                <div>
-                  <NavLink to="/profile/enfant" className="external-link">
-                    Ajouter un enfant ?
-                  </NavLink>
-                </div>
-              </div>
-            )}
-          </div>
-          <hr className="w-full text-grey-font my-7" />
+            </div>
+          )}
 
           <BookingsInfos bookings={userBookings} />
         </div>

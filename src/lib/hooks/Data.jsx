@@ -3,6 +3,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { supabase } from "../../lib/helpers/supabaseClient.js";
 import { useAuth } from "./Auth.tsx";
+import { useReducer } from "react";
 
 const APIContext = createContext();
 
@@ -17,7 +18,7 @@ const APIContextProvider = ({ children }) => {
   const [userBookings, setUserBookings] = useState([]);
   const [userProfile, setUserProfile] = useState([]);
 
-  useEffect(() => {
+  const fetchData = () => {
     if (session) {
       // ALL COURSES
       const { data: coursesData } = supabase
@@ -39,7 +40,7 @@ const APIContextProvider = ({ children }) => {
       // USER BOOKINGS
       const { data: bookingsData } = supabase
         .from("bookings")
-        .select(`*, courses(*), available_hours(*)`)
+        .select(`*, courses(*),childs(*), available_hours(*)`)
         .order("booking_date", { ascending: true })
         .eq("user_id", user.id)
         .then((resultBookingData) => {
@@ -85,6 +86,9 @@ const APIContextProvider = ({ children }) => {
     } else {
       return;
     }
+  };
+  useEffect(() => {
+    fetchData();
   }, []);
   return (
     <APIContext.Provider

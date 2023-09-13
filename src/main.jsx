@@ -13,7 +13,7 @@ import SignIn from "./pages/Clients/SignIn.jsx";
 import ScrollToTop from "./ScrollToTop.jsx";
 import { AuthProvider } from "./lib/hooks/Auth.tsx";
 import SignUp from "./pages/Clients/SignUp.jsx";
-import Profile from "./pages/Clients/Profile.jsx";
+import Profil from "./pages/Clients/Profil.jsx";
 import NewChild from "./pages/Clients/NewChild.jsx";
 import UpdateChild from "./pages/Clients/UpdateChild.jsx";
 import Admin from "./pages/Admin/Admin.jsx";
@@ -37,7 +37,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
               <Route exact path="/contact" element={<Contact />} />
               <Route exact path="/presentation" element={<Presentation />} />
               <Route exact path="/pricing" element={<Pricing />} />
-              <Route exact path="/profile" element={<Profile />} />
+              <Route exact path="/profil" element={<Profil />} />
               <Route exact path="/admin" element={<Admin />} />
               <Route exact path="/admin/enfant/:id" element={<Child />} />
               <Route

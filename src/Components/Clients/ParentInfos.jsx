@@ -5,9 +5,9 @@ import { supabase } from "../../lib/helpers/supabaseClient";
 import { useAuth } from "../../lib/hooks/Auth";
 import { useAPI } from "../../lib/hooks/Data";
 
-const ParentInfos = ({ userProfile }) => {
+const ParentInfos = ({ userProfile, userChilds }) => {
   return (
-    <section className="flexbox-col-start w-full">
+    <section className="flexbox-col-start w-full mb-7">
       <div className="flexbox-col w-full">
         <div className="flexbox-row justify-between w-full bg-secondary-var-1 p-7 rounded-md">
           <h2 className="lg:text-title font-bold">Vos informations</h2>
@@ -44,6 +44,14 @@ const ParentInfos = ({ userProfile }) => {
             • Code Postale :{" "}
           </span>
           <span>{userProfile?.postale}</span>
+        </div>
+        <div className="flex gap-3">
+          <span className="text-primary-var-1 font-bold">Enfants: </span>
+          <span>
+            {userChilds?.map((child) => (
+              <p key={child?.id}>- {child.first_name}</p>
+            ))}{" "}
+          </span>
         </div>
       </div>
     </section>

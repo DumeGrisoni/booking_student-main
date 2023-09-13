@@ -45,6 +45,7 @@ const Bookings = () => {
         course_id: selectedCourse.courses,
         booking_date: formattedDay,
         hours: selectedHour,
+        confirmed: false,
       });
       if (error) throw error;
       setShowModal(true);
@@ -54,7 +55,7 @@ const Bookings = () => {
   };
   const handleModal = () => {
     setShowModal(false);
-    navigate("/profile");
+    navigate("/profil");
   };
   if (!session) {
     return <SignIn />;

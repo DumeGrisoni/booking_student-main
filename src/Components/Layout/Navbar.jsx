@@ -75,9 +75,10 @@ const Navbar = () => {
                 <NavLink
                   to={
                     user.id != import.meta.env.VITE_SUPABASE_ID
-                      ? "/profile"
+                      ? "/profil"
                       : "/admin"
                   }
+                  reloadDocument
                   className="font-bold text-title text-primary hover:text-primary-var-2 duration-300 ease-out transition-all"
                 >
                   <AiOutlineUser className="text-title hidden lg:block" />

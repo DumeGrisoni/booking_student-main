@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import Button from "../Utils/Button";
+import Button from "../../Utils/Button";
 const ConfirmationModal = ({ closeModal }) => {
   return (
     <div className="fixed inset-0 bg-secondary-blur border">

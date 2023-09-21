@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
-import { supabase } from "../../lib/helpers/supabaseClient";
-import { useAuth } from "../../lib/hooks/Auth";
-import { useAPI } from "../../lib/hooks/Data";
+import { supabase } from "../../../lib/helpers/supabaseClient";
+import { useAuth } from "../../../lib/hooks/Auth";
+import { useAPI } from "../../../lib/hooks/Data";
 
 const ParentInfos = ({ userProfile, userChilds }) => {
   return (

@@ -2,10 +2,10 @@
 import { useAuth } from "../../lib/hooks/Auth";
 import { supabase } from "../../lib/helpers/supabaseClient";
 import { NavLink, useNavigate } from "react-router-dom";
-import ParentInfos from "../../Components/Clients/ParentInfos";
+import ParentInfos from "../../Components/Clients/Parents/ParentInfos.jsx";
 import { useAPI } from "../../lib/hooks/Data";
-import ChildInfo from "../../Components/Clients/ChildInfo";
-import BookingsInfos from "../../Components/Clients/BookingsInfos";
+import ChildInfo from "../../Components/Clients/Childs/ChildsInfo.jsx";
+import BookingsInfos from "../../Components/Clients/Bookings/BookingsInfos.jsx";
 
 const Profil = () => {
   const { user, session } = useAuth();
@@ -33,7 +33,7 @@ const Profil = () => {
               Bienvenue {user.user_metadata.name}
             </span>
             <div>
-              <NavLink to="/profile/enfant" className="external-link">
+              <NavLink to="/profil/enfant" className="external-link">
                 Ajouter un enfant ?
               </NavLink>
             </div>

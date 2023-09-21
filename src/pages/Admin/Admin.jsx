@@ -4,9 +4,10 @@ import { supabase } from "../../lib/helpers/supabaseClient.js";
 import { BsFillArrowDownCircleFill } from "react-icons/bs";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAPI } from "../../lib/hooks/Data";
+import AdminBookings from "../../Components/Admin/AdminBookings";
 
 const Admin = () => {
-  const { allChilds } = useAPI();
+  const { allChilds, allProfiles } = useAPI();
 
   async function handleSignOut() {
     try {
@@ -16,6 +17,7 @@ const Admin = () => {
       alert(error);
     }
   }
+
   const navigate = useNavigate();
   const { user } = useAuth();
   const id = import.meta.env.VITE_SUPABASE_ID;
@@ -34,16 +36,29 @@ const Admin = () => {
               Déconnexion
             </button>
           </div>
-          <div className="flexbox-col w-full gap-7">
-            <div className="text-headline">
-              Bienvenue {user.user_metadata.name}
-            </div>
-            <hr className="w-full" />
-            <div className="text-title font-bold">Tous les cours</div>
 
+          {/* DISPLAY ADMIN NAME */}
+          <div className="flexbox-col w-full gap-7">
+            <h1 className="text-headline">
+              Bienvenue {user.user_metadata.name}
+            </h1>
+            <hr className="w-full" />
+
+            {/* ALL BOOKINGS */}
+            <h2 className="text-title font-bold">Toutes les réservations</h2>
+            <section>
+              <AdminBookings />
+            </section>
             <hr className="w-[80%]" />
+
+            {/* ALL USERS */}
+            <h2 className="text-title font-bold">Tous les utilisateurs</h2>
+            <section></section>
+            <hr className="w-[80%]" />
+
+            {/* ALL CHILDS */}
             <div className="text-title font-bold">Tous les enfants</div>
-            <div className="flexbox-col gap-3 w-full">
+            <section className="flexbox-col gap-3 w-full">
               <table className="border-default table-auto w-full min-w-max text-center">
                 <thead className="bg-secondary-var-1 border-b border-grey-font">
                   <tr>
@@ -65,7 +80,7 @@ const Admin = () => {
                       <td>{child.age}</td>
                       <td>
                         <button className="hover:text-primary-var-2 duration-300 ease-in-out">
-                          <NavLink to={`admin/enfant/${child.id}`}>
+                          <NavLink to={`/admin/enfant/${child.id}`}>
                             <BsFillArrowDownCircleFill />
                           </NavLink>
                         </button>
@@ -74,11 +89,11 @@ const Admin = () => {
                   ))}
                 </tbody>
               </table>
-            </div>
+            </section>
           </div>
         </div>
       ) : (
-        <>{navigate("/")}</>
+        navigate("/")
       )}
     </div>
   );

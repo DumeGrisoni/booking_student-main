@@ -69,7 +69,6 @@ function Home() {
           </div>
         </section>
       </div>
-      {/* <Calendar2 /> */}
     </div>
   );
 }

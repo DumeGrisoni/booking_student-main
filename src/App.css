@@ -48,6 +48,9 @@
   .border-default {
     @apply border border-grey-font rounded-md
   }
+  .scheduler {
+    @apply text-primary-var-1 bg-secondary
+  }
 
 }
 

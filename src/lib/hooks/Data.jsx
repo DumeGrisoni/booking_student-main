@@ -4,11 +4,12 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { supabase } from "../../lib/helpers/supabaseClient.js";
 import { useAuth } from "./Auth.tsx";
 import { useReducer } from "react";
+import { useParams } from "react-router-dom";
 
 const APIContext = createContext();
 
 const APIContextProvider = ({ children }) => {
-  const id = import.meta.env.VITE_SUPABASE_ID;
+  const adminId = import.meta.env.VITE_SUPABASE_ID;
   const { user, session } = useAuth();
   const [allProfiles, setAllProfiles] = useState([]);
   const [allChilds, setAllChilds] = useState([]);
@@ -47,6 +48,7 @@ const APIContextProvider = ({ children }) => {
           setUserBookings(resultBookingData.data);
         });
 
+      // USER PROFILES
       const { data: userProfileData } = supabase
         .from("profiles")
         .select()
@@ -56,7 +58,7 @@ const APIContextProvider = ({ children }) => {
         });
 
       // ADMIN ONLY
-      if (user.id === id) {
+      if (user.id === adminId) {
         // ALL CHILDS
         const { data: childsData } = supabase
           .from("childs")
@@ -76,7 +78,7 @@ const APIContextProvider = ({ children }) => {
         // ALL BOOKINGS
         const { data: bookingsData } = supabase
           .from("bookings")
-          .select()
+          .select(`*, courses(*),childs(*), available_hours(*)`)
           .then((resultBookingsData) => {
             setAllBookings(resultBookingsData.data);
           });

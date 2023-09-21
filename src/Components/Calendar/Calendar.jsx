@@ -36,7 +36,7 @@ const Calendar = (props) => {
           .select("*")
           .eq("booking_date", formattedDay);
 
-        const bookedHours = bookingData.map((booking) => booking.id);
+        const bookedHours = bookingData.map((booking) => booking.hours);
 
         const { data: availableHoursData } = await supabase
           .from("available_hours")
@@ -46,6 +46,7 @@ const Calendar = (props) => {
           (slot) => !bookedHours.includes(slot.id)
         );
         setAvailableHours(filteredHours);
+        console.log(bookingData);
       }
     };
     fetchAvailableHours();

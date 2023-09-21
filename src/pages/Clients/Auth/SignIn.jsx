@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { supabase } from "../../lib/helpers/supabaseClient";
+import { supabase } from "../../../lib/helpers/supabaseClient";
 
 const SignIn = () => {
   const navigate = useNavigate();

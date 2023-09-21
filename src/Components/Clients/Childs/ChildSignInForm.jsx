@@ -3,17 +3,12 @@ import { useState } from "react";
 /* eslint-disable react/prop-types */
 const ChildForm = (props) => {
   const [formChildData, setFormChildData] = useState({
-    childLastName: "",
     childFirstName: "",
     age: null,
-    needs: "",
     hobbies: "",
     level: "",
+    childLastName: "",
   });
-  const handleChildSubmit = (e) => {
-    e.preventDefault();
-    props.onSubmit(formChildData);
-  };
 
   const handleChildChange = (e) => {
     setFormChildData((prevFormChildData) => {
@@ -23,6 +18,12 @@ const ChildForm = (props) => {
       };
     });
   };
+
+  const handleChildSubmit = (e) => {
+    e.preventDefault();
+    props.onSubmit(formChildData);
+  };
+
   return (
     <form
       action="submit"
@@ -79,7 +80,7 @@ const ChildForm = (props) => {
             <option value="default" defaultValue hidden>
               Choisir une option
             </option>
-            <option value="cp">CP</option>
+            <option value="CP">CP</option>
             <option value="CE1">CE1</option>
             <option value="CE2">CE2</option>
             <option value="CM1">CM1</option>
@@ -117,7 +118,7 @@ const ChildForm = (props) => {
           onChange={handleChildChange}
         />
       </div>
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center mb-7">
         <button type="submit" className="btn p-2">
           Ajouter
         </button>

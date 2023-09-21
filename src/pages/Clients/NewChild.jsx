@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import ChildForm from "../../Components/Clients/ChildForm";
+import ChildSignInForm from "../../Components/Clients/Childs/ChildSignInForm";
 import { supabase } from "../../lib/helpers/supabaseClient";
 import { useAuth } from "../../lib/hooks/Auth";
 
@@ -20,7 +20,7 @@ const NewChild = () => {
         },
       ]);
       if (error) alert(error);
-      navigate("/profile");
+      navigate("/profil");
     } catch (error) {
       alert(error);
     }
@@ -30,7 +30,7 @@ const NewChild = () => {
       {session ? (
         <div className="flex flex-col gap-7 my-16">
           <h1 className="text-title text-center">Ajouter un nouvel enfant</h1>
-          <ChildForm onSubmit={handleChildSubmit} />
+          <ChildSignInForm onSubmit={handleChildSubmit} />
         </div>
       ) : (
         navigate("/")

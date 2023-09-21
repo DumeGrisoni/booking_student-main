@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
-import { supabase } from "../../lib/helpers/supabaseClient";
+import { supabase } from "../../../lib/helpers/supabaseClient";
 import { NavLink, useNavigate } from "react-router-dom";
-import ParentForm from "../../Components/Clients/ParentForm";
+import ParentForm from "../../../Components/Clients/Parents/ParentForm";
 
 const SignUp = () => {
   const navigate = useNavigate();

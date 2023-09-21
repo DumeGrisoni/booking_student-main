@@ -1,11 +1,11 @@
 /* eslint-disable no-unused-vars */
 import { useAuth } from "../../lib/hooks/Auth.tsx";
 import { supabase } from "../../lib/helpers/supabaseClient.js";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createPortal } from "react-dom";
-import ConfirmationModal from "../../Components/Clients/ConfirmationModal.jsx";
-import SignIn from "./SignIn.jsx";
+import ConfirmationModal from "../../Components/Clients/Bookings/ConfirmationModal.jsx";
+import SignIn from "./Auth/SignIn.jsx";
 import Calendar from "../../Components/Calendar/Calendar.jsx";
 import Text from "../../Components/Utils/Text.jsx";
 import { useAPI } from "../../lib/hooks/Data";

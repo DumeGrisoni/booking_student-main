@@ -9,6 +9,15 @@ import momentLocalizer from "react-big-calendar/lib/localizers/moment";
 import { fr } from "date-fns/locale";
 
 const AdminBookings = () => {
+  // Fetching Bookings
+  const { allBookings } = useAPI();
+
+  // Filtering to only have confirmed bookings
+  const AllFilteredBookings = allBookings.filter(
+    (filteredBookings) => filteredBookings.confirmed == true
+  );
+
+  // Hours in France Timezone
   moment.locale("fr");
   const localizer = momentLocalizer(moment, {
     locales: { fr: fr },
@@ -18,9 +27,9 @@ const AdminBookings = () => {
       LT: "HH:mm", // Format 24 heures
     },
   });
-  const { allBookings } = useAPI();
 
-  const formattedDateHour = allBookings.map((booking) => {
+  // Formatting hours to take Date and Hour of booking
+  const formattedDateHour = AllFilteredBookings.map((booking) => {
     const startTime = moment(
       `${booking.booking_date} ${booking.available_hours.hours}`,
       "YYYY-MM-DD HH:mm"
@@ -33,6 +42,7 @@ const AdminBookings = () => {
     };
   });
 
+  //French Translation
   const messages = {
     allDay: "Toute la journée",
     previous: "Précédent",
@@ -45,14 +55,19 @@ const AdminBookings = () => {
     date: "Date",
     time: "Heure",
   };
+
+  // Returning only the title (name of the child)
   const formats = {
     eventTimeRangeFormat: () => {
       return "";
     },
   };
 
+  //Changing the display hours to 08h to 20h
+  const today = new Date();
+
   return (
-    <div style={{ height: "800px" }}>
+    <div style={{ height: "90vh" }}>
       <Calendar
         localizer={localizer}
         events={formattedDateHour.map((booking) => ({
@@ -63,6 +78,12 @@ const AdminBookings = () => {
             "YYYY-MM-DD HH:mm"
           )} - ${moment(booking.end).format("YYYY-MM-DD HH:mm")}`, // Format 24 heures
         }))}
+        min={
+          new Date(today.getFullYear(), today.getMonth(), today.getDate(), 8)
+        }
+        max={
+          new Date(today.getFullYear(), today.getMonth(), today.getDate(), 20)
+        }
         formats={formats}
         culture="fr"
         messages={messages}

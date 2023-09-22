@@ -22,7 +22,7 @@ const SignUp = () => {
         },
       });
       if (error) throw error;
-      navigate("/profile/enfant");
+      navigate("/profil");
     } catch (error) {
       alert(error);
     }

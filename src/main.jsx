@@ -11,6 +11,7 @@ import { Profil, NewChild, Bookings } from "./pages/Clients/index.js";
 import { Admin, AdminSingleChildInfo } from "./pages/Admin/index.js";
 
 import APIContextProvider from "./lib/hooks/Data.jsx";
+import AdminSingleParentInfo from "./pages/Admin/AdminSingleParentInfo";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
@@ -32,6 +33,10 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             <Route
               path="/admin/enfant/:id"
               element={<AdminSingleChildInfo />}
+            />
+            <Route
+              path="/admin/parent/:id"
+              element={<AdminSingleParentInfo />}
             />
             <Route
               path="*"

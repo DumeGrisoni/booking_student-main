@@ -48,7 +48,7 @@ const Profil = () => {
             <ChildInfo childs={userChilds} />
           ) : (
             <div className="flexbox-col gap-3">
-              <span>Vous n&apos;avez pas d&apos;enfants</span>
+              <span>Vous n&apos;avez pas d&apos;enfant enregistré</span>
               <div>
                 <NavLink to="/profile/enfant" className="external-link">
                   Ajouter un enfant ?

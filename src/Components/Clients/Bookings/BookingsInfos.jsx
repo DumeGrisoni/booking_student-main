@@ -1,7 +1,11 @@
 /* eslint-disable react/prop-types */
-
 import { AiOutlineClose, AiOutlineCheck } from "react-icons/ai";
+
 const BookingsInfos = ({ bookings }) => {
+  const descolarise = import.meta.env.VITE_COURSE_DESCOLARISE;
+  const course_1 = import.meta.env.VITE_COURSE_1H;
+  const course_8 = import.meta.env.VITE_COURSE_8H;
+
   const formatedDay = (props) => {
     const date = new Date(props);
     let month = date.getMonth() + 1;

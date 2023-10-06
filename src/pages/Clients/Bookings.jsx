@@ -36,23 +36,27 @@ const Bookings = () => {
     });
   }
 
-  const handleForm = async (selectedHour, formattedDay) => {
-    console.log(selectedCourse.courses);
+  const handleForm = async (selectedHourDate) => {
     try {
-      const { error } = await supabase.from("bookings").insert({
-        user_id: user.id,
-        child_id: selectedChild.childs,
-        course_id: selectedCourse.courses,
-        booking_date: formattedDay,
-        hours: selectedHour,
-        confirmed: false,
-      });
-      if (error) throw error;
+      for (let i = 0; i < selectedHourDate.length; i++) {
+        const { error } = await supabase.from("bookings").insert([
+          {
+            user_id: user.id,
+            child_id: selectedChild.childs,
+            course_id: selectedCourse.courses,
+            booking_date: selectedHourDate[i].date,
+            hours: selectedHourDate[i].id,
+            confirmed: false,
+          },
+        ]);
+        if (error) throw error;
+      }
       setShowModal(true);
     } catch (error) {
       console.log(error);
     }
   };
+
   const handleModal = () => {
     setShowModal(false);
     navigate("/profil");
@@ -120,7 +124,7 @@ const Bookings = () => {
               )}
             </form>
             {selectedCourse && selectedChild ? (
-              <Calendar onSubmit={handleForm} />
+              <Calendar onSubmit={handleForm} selectedCourse={selectedCourse} />
             ) : (
               <></>
             )}

@@ -29,39 +29,41 @@ const AdminUnvalidatedBookings = (props) => {
   };
 
   return (
-    <section className="border-default shadow-default gap-3 flexbox-col w-full p-2">
-      {AllFilteredBookings ? (
-        AllFilteredBookings.map((booking) => (
-          <form
-            key={booking.id}
-            action="submit"
-            onSubmit={handleConfirmation}
-            className="w-full"
-          >
-            <div className="flexbox-row justify-around items-center gap-2 px-4 py-2">
-              <span className="font-bold text-primary-var-1">
-                {booking.childs.first_name}
-              </span>
-              <span>{booking.childs.last_name}</span>
-              <span>{formatedDay(booking.booking_date)}</span>
-              <span>{booking.available_hours.hours.slice(0, -3)}</span>
-              <div className="mb-3">
-                <button
-                  type="submit"
-                  className="btn px-2 py-1"
-                  onClick={() =>
-                    setConfirmationForm({
-                      bookingId: booking.id,
-                      confirmed: true,
-                    })
-                  }
-                >
-                  Confirmer
-                </button>
+    <section>
+      {AllFilteredBookings.length != 0 ? (
+        <div className="border-default shadow-default gap-3 flexbox-col w-full p-2">
+          {AllFilteredBookings.map((booking) => (
+            <form
+              key={booking.id}
+              action="submit"
+              onSubmit={handleConfirmation}
+              className="w-full"
+            >
+              <div className="flexbox-row justify-around items-center gap-2 px-4 py-2">
+                <span className="font-bold text-primary-var-1">
+                  {booking.childs.first_name}
+                </span>
+                <span>{booking.childs.last_name}</span>
+                <span>{formatedDay(booking.booking_date)}</span>
+                <span>{booking.available_hours.hours.slice(0, -3)}</span>
+                <div className="mb-3">
+                  <button
+                    type="submit"
+                    className="btn px-2 py-1"
+                    onClick={() =>
+                      setConfirmationForm({
+                        bookingId: booking.id,
+                        confirmed: true,
+                      })
+                    }
+                  >
+                    Confirmer
+                  </button>
+                </div>
               </div>
-            </div>
-          </form>
-        ))
+            </form>
+          ))}
+        </div>
       ) : (
         <span>Vous n&apos;avez pas de nouvelle réservation</span>
       )}

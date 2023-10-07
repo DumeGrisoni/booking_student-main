@@ -3,7 +3,7 @@ import Button from "../../Utils/Button";
 const ConfirmationModal = ({ closeModal }) => {
   return (
     <div className="fixed inset-0 bg-secondary-blur border">
-      <div className="fixed z-10 top-1/3 left-1/2 -translate-y-1/2 -translate-x-1/2 bg-secondary border border-grey-font rounded-md">
+      <div className="fixed z-10 top-[50%] left-1/2 -translate-y-1/2 -translate-x-1/2 bg-secondary border border-grey-font rounded-md">
         <div className="p-16 flex flex-col gap-7 text-primary items-center justify-center text-default text-center">
           <h2 className="text-title font-bold">
             Nous vous remercions pour votre réservation

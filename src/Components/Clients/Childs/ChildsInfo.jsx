@@ -27,13 +27,13 @@ const ChildInfo = ({ childs }) => {
   };
 
   return (
-    <section className=" bg-secondary-var-1 w-full border-default">
+    <section className=" bg-secondary-var-1 w-full border-default shadow-default">
       <div className="flexbox-row text-center md:text-left border-b border-grey-font">
         <h2 className="text-title font-bold p-7 bg-secondary-var-1 rounded-md w-full">
           Vos Enfants
         </h2>
       </div>
-      <div className="flex flex-col md:flex-row justify-center md:justify-around items-center flex-wrap">
+      <div className="flex flex-col md:flex-row justify-center md:justify-around items-center bg-secondary rounded-md flex-wrap">
         {childs.map((child) => (
           <div key={child.id}>
             <SingleChildInfo child={child} onSubmit={handleFormUpdate} />

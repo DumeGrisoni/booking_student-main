@@ -42,7 +42,7 @@ const APIContextProvider = ({ children }) => {
       const { data: bookingsData } = supabase
         .from("bookings")
         .select(`*, courses(*),childs(*), available_hours(*)`)
-        .order("booking_date", { ascending: true })
+        .order("booking_date", { ascending: false })
         .eq("user_id", user.id)
         .then((resultBookingData) => {
           setUserBookings(resultBookingData.data);
@@ -54,7 +54,7 @@ const APIContextProvider = ({ children }) => {
         .select()
         .eq("id", user.id)
         .then((resultUserProfileData) => {
-          setUserProfile(resultUserProfileData.data);
+          setUserProfile(resultUserProfileData.data[0]);
         });
 
       // ADMIN ONLY

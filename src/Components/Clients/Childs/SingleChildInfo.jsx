@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import Button from "../../Utils/Button";
+import { AiOutlineClose } from "react-icons/ai";
 
 const SingleChildInfo = ({ child, onSubmit }) => {
   const [edit, setEdit] = useState(false);
@@ -35,15 +36,18 @@ const SingleChildInfo = ({ child, onSubmit }) => {
       className={
         !edit
           ? `border-default shadow-default my-3 py-7 px-10 gap-3 min-w-[200px] w-[250px] md:w-[500px] lg:w-[600px] h-auto flexbox-col-start bg-secondary-var-1 transition-all `
-          : `border-default shadow-default my-3 py-7 px-10 gap-3 min-w-[300px] md:w-[600px] w-[300px] lg:w-[800px] h-auto flexbox-col-start bg-secondary transition-all `
+          : `border-default shadow-default my-3 py-7 px-10 gap-3 min-w-[300px] md:w-[600px] w-[300px] lg:w-[600px] h-auto flexbox-col-start bg-secondary transition-all `
       }
     >
       {edit ? (
         <div>
           <div>
-            <span className="font-bold uppercase text-primary-var-1">
-              Prénom :{" "}
-            </span>
+            <div className="font-bold uppercase flexbox-row justify-between">
+              <span className=" text-primary-var-1">Prénom :</span>
+              <button onClick={() => setEdit(!edit)}>
+                <AiOutlineClose color="red" />
+              </button>
+            </div>
             <input
               value={formChild.childFirstName}
               name="childFirstName"

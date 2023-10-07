@@ -30,6 +30,9 @@
   .btn {
     @apply text-secondary hover:text-primary rounded-md shadow-sm shadow-grey-font border border-secondary hover:border-primary  bg-primary hover:bg-secondary duration-300 ease-in-out transition-all;
   }
+  .btn_active {
+    @apply text-primary rounded-md shadow-sm shadow-grey-font border border-primary bg-secondary;
+  }
   .flexbox-col{
     @apply flex flex-col justify-center items-center
   }

@@ -1,7 +1,16 @@
 /* eslint-disable react/prop-types */
+import { useState } from "react";
 import { AiOutlineClose, AiOutlineCheck } from "react-icons/ai";
+import Pagination from "../../Utils/Pagination";
 
 const BookingsInfos = ({ bookings }) => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [coursesPerPage, setCoursesPerPage] = useState(8);
+
+  const lastCourseIndex = currentPage * coursesPerPage;
+  const firstCourseIndex = lastCourseIndex - coursesPerPage;
+  const currentBookings = bookings.slice(firstCourseIndex, lastCourseIndex);
+
   const descolarise = import.meta.env.VITE_COURSE_DESCOLARISE;
   const course_1 = import.meta.env.VITE_COURSE_1H;
   const course_8 = import.meta.env.VITE_COURSE_8H;
@@ -13,14 +22,20 @@ const BookingsInfos = ({ bookings }) => {
     return day + "/" + month;
   };
 
-  const TABLE_HEAD = ["Titre", "Date", "Heure", "Prix", "Confirmé"];
+  const TABLE_HEAD = ["Titre", "Date", "Heure", "Confirmé"];
 
   return (
-    <div className=" bg-secondary-var-1 w-full border-default">
+    <div className=" bg-secondary-var-1 w-full border-default shadow-default">
       <div className="flexbox-row text-center md:text-left border-b border-grey-font">
         <h2 className="text-title font-bold p-7 bg-secondary-var-1 rounded-md w-full">
           Vos Cours
         </h2>
+        <Pagination
+          totalDatas={bookings.length}
+          datasPerPage={coursesPerPage}
+          setCurrentPage={setCurrentPage}
+          currentPage={currentPage}
+        />
       </div>
 
       <table className="table-auto w-full text-center mb-3 md:text-default text-[10px]">
@@ -34,7 +49,7 @@ const BookingsInfos = ({ bookings }) => {
           </tr>
         </thead>
         <tbody className="bg-secondary-var-1">
-          {bookings?.map((booking) => (
+          {currentBookings?.map((booking) => (
             <tr key={booking.id} className="text-center h-[5rem]">
               <td className="p-2 lg:p-0">{booking.courses.title}</td>
               <td className="p-2 lg:p-0">
@@ -43,7 +58,6 @@ const BookingsInfos = ({ bookings }) => {
               <td className="p-2 lg:p-0">
                 {booking.available_hours.hours.slice(0, -3)}
               </td>
-              <td className="p-2 lg:p-0">{booking.courses.price}€</td>
               <td className="p-2 lg:p-0">
                 {booking.confirmed ? (
                   <div className="flexbox-row">

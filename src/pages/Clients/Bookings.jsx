@@ -119,11 +119,13 @@ const Bookings = () => {
                       </option>
                     ))
                   ) : (
-                    <div>Veuillez nous contacter</div>
+                    <div>Aucun Cours disponible</div>
                   )}
                 </select>
               ) : (
-                <></>
+                <span className="text-default font-bold text-primary text-center">
+                  Veuillez nous contacter !
+                </span>
               )}
             </form>
             {selectedCourse && selectedChild ? (

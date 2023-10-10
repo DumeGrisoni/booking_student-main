@@ -11,12 +11,11 @@ const Calendar = ({ selectedCourse, onSubmit }) => {
   const [formattedDay, setFormattedDay] = useState();
   const [displaySelectedHour, setDisplaySelectedHour] = useState();
   const [selectedHourDate, setSelectedHourDate] = useState([]);
-  const descolarise = import.meta.env.VITE_COURSE_DESCOLARISE;
-  const course_1 = import.meta.env.VITE_COURSE_1H;
   const course_8 = import.meta.env.VITE_COURSE_8H;
+  const course_1 = import.meta.env.VITE_COURSE_1H;
   const course = selectedCourse.courses;
 
-  // FETCH ALL AVAILABLE HOUR AND FILTER THEM s
+  // FETCH ALL AVAILABLE HOUR AND FILTER THEM
   useEffect(() => {
     const fetchAvailableHours = async () => {
       if (formattedDay) {
@@ -25,8 +24,10 @@ const Calendar = ({ selectedCourse, onSubmit }) => {
           .select("*")
           .eq("booking_date", formattedDay);
 
+        // TAKE ALL BOOKINGS_HOURS FROM BOOKINGS
         const bookedHours = bookingData.map((booking) => booking.hours);
 
+        //FETCH ALL AVAILABLE HOURS
         const { data: availableHoursData } = await supabase
           .from("available_hours")
           .select();
@@ -78,24 +79,27 @@ const Calendar = ({ selectedCourse, onSubmit }) => {
         } else {
           alert("Vous avez déjà selectionné les 8 horaires disponibles");
         }
-      } else if (course === descolarise) {
-        setSelectedHourDate((selectedHourDate) => [
-          ...selectedHourDate,
-          {
-            date: formattedDay,
-            id: e.target.value[0],
-            hour: e.target.value.slice(2, -3),
-          },
-        ]);
-      } else {
-        setSelectedHourDate((selectedHourDate) => [
-          ...selectedHourDate,
-          {
-            date: formattedDay,
-            id: e.target.value[0],
-            hour: e.target.value.slice(2, -3),
-          },
-        ]);
+      } else if (course === course_1) {
+        if (selectedHourDate.length >= 1) {
+          selectedHourDate.shift();
+          setSelectedHourDate((selectedHourDate) => [
+            ...selectedHourDate,
+            {
+              date: formattedDay,
+              id: e.target.value[0],
+              hour: e.target.value.slice(2, -3),
+            },
+          ]);
+        } else {
+          setSelectedHourDate((selectedHourDate) => [
+            ...selectedHourDate,
+            {
+              date: formattedDay,
+              id: e.target.value[0],
+              hour: e.target.value.slice(2, -3),
+            },
+          ]);
+        }
       }
       setDisplaySelectedHour(e.target.value);
     } else {
@@ -109,6 +113,8 @@ const Calendar = ({ selectedCourse, onSubmit }) => {
     onSubmit(selectedHourDate);
   };
 
+  console.log(selectedHourDate);
+
   return (
     <form className="flexbox-col gap-7" onSubmit={handleSubmit}>
       <ReactCalendar
@@ -120,9 +126,11 @@ const Calendar = ({ selectedCourse, onSubmit }) => {
         onClickDay={handleDate}
         className="shadow-md shadow-secondary-blur rounded-md bg-secondary-var-1 w-[300px] md:w- lg:w-[500px] xl:w-[600px]  border border-secondary-blur p-0 lg:p-2 text-default"
       />
+      {/* Check if a day is selected  */}
       {selectedDay != 0 ? (
         <div className="flex justify-around gap-1 xl:gap-3 items-center">
-          {availableHours ? (
+          {/* Check if there is available hours for this DAY availableHours */}
+          {availableHours.length > 0 ? (
             availableHours?.map((hour) => (
               <div
                 key={hour.id}
@@ -138,15 +146,17 @@ const Calendar = ({ selectedCourse, onSubmit }) => {
               </div>
             ))
           ) : (
-            <span>Pas d&apos;horaire</span>
+            <span className="text-default text-primary font-bold">
+              Pas d&apos;horaire disponible
+            </span>
           )}
         </div>
       ) : (
         <></>
       )}
-      {course === course_8 &&
-      selectedHourDate.length < 9 &&
-      selectedHourDate.length > 1 ? (
+      {(course === course_8) &
+      (selectedHourDate.length < 9) &
+      (selectedHourDate.length > 1) ? (
         <div className="flexbox-col gap-5">
           <BookingDateAndHour
             setSelectedHourDate={setSelectedHourDate}
@@ -154,7 +164,7 @@ const Calendar = ({ selectedCourse, onSubmit }) => {
             selectedDay={selectedDay}
           />
           {selectedHourDate.length === 8 ? (
-            <div className="flex mx-auto justify-items-center">
+            <div className="flex mx-auto justify-center">
               <Button type="submit">Réserver</Button>
             </div>
           ) : (
@@ -171,7 +181,7 @@ const Calendar = ({ selectedCourse, onSubmit }) => {
                 displaySelectedHour?.replace(":", "H").slice(2, -3)
               : ""}
           </p>
-          <div className="flex mx-auto justify-items-center">
+          <div className="flex mx-auto justify-center">
             <Button type="submit">Réserver</Button>
           </div>
         </div>

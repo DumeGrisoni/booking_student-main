@@ -7,10 +7,9 @@ import AdminBookings from "../../Components/Admin/AdminBookings";
 import AdminUnvalidatedBookings from "../../Components/Admin/AdminUnvalidatedBookings";
 import AdminParentList from "../../Components/Admin/AdminParentList";
 import AdminChilds from "../../Components/Admin/AdminChilds";
-import { PiKeyReturnFill } from "react-icons/pi";
 
 const Admin = () => {
-  const { allChilds, allProfiles } = useAPI();
+  const { allChilds, allProfiles, allBookings } = useAPI();
 
   async function handleSignOut() {
     try {

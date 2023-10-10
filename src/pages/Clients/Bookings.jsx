@@ -9,6 +9,7 @@ import SignIn from "./Auth/SignIn.jsx";
 import Calendar from "../../Components/Calendar/Calendar.jsx";
 import Text from "../../Components/Utils/Text.jsx";
 import { useAPI } from "../../lib/hooks/Data";
+const descolarise = import.meta.env.VITE_COURSE_DESCOLARISE;
 
 const Bookings = () => {
   const { allCourses, userChilds } = useAPI();
@@ -61,6 +62,8 @@ const Bookings = () => {
     setShowModal(false);
     navigate("/profil");
   };
+  console.log(selectedCourse);
+
   if (!session) {
     return <SignIn />;
   } else {
@@ -99,7 +102,7 @@ const Bookings = () => {
                   </option>
                 ))}
               </select>
-              {selectedCourse ? (
+              {selectedCourse && selectedCourse?.courses != descolarise ? (
                 <select
                   name="childs"
                   id="childs"
@@ -116,7 +119,7 @@ const Bookings = () => {
                       </option>
                     ))
                   ) : (
-                    <></>
+                    <div>Veuillez nous contacter</div>
                   )}
                 </select>
               ) : (

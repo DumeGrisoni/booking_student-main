@@ -42,7 +42,7 @@ const APIContextProvider = ({ children }) => {
       const { data: bookingsData } = supabase
         .from("bookings")
         .select(`*, courses(*),childs(*), available_hours(*)`)
-        .order("booking_date", { ascending: false })
+        .order("created_at", { ascending: true })
         .eq("user_id", user.id)
         .then((resultBookingData) => {
           setUserBookings(resultBookingData.data);

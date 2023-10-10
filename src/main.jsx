@@ -12,6 +12,7 @@ import { Admin, AdminSingleChildInfo } from "./pages/Admin/index.js";
 
 import APIContextProvider from "./lib/hooks/Data.jsx";
 import AdminSingleParentInfo from "./pages/Admin/AdminSingleParentInfo";
+import AdminUpdateBookingCard from "./pages/Admin/AdminUpdateBookingCard";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
@@ -30,6 +31,10 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/profil" element={<Profil />} />
             <Route path="/admin" element={<Admin />} />
+            <Route
+              path="/admin/reservation/:id"
+              element={<AdminUpdateBookingCard />}
+            />
             <Route
               path="/admin/enfant/:id"
               element={<AdminSingleChildInfo />}

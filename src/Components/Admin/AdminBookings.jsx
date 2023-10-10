@@ -67,7 +67,7 @@ const AdminBookings = () => {
   const today = new Date();
 
   return (
-    <div style={{ height: "90vh" }}>
+    <div style={{ height: "90vh", margin: "0px" }}>
       <Calendar
         localizer={localizer}
         events={formattedDateHour.map((booking) => ({
